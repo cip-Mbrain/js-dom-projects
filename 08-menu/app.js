@@ -71,14 +71,6 @@ const menu = [
     img: './images/item-9.jpeg',
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
-  {
-    id: 10,
-    title: 'quarantine buddy',
-    category: 'shakes',
-    price: 16.99,
-    img: './images/item-10.jpeg',
-    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
-  },
 ];
 
 const sectionCenter = document.querySelector('.section-center');
@@ -86,8 +78,8 @@ const sectionCenter = document.querySelector('.section-center');
 window.addEventListener('DOMContentLoaded', () => {
   let displayMenu = menu.map(function (item) {
     // console.log(item);
-    return ` <article class="menu-item">
-          <img src=${item.img} class="photo" alt=${item.title} />
+    return `<article class="menu-item">
+          <img src=${item.img} class="photo" alt="${item.title}" />
           <div class="item-info">
             <header>
               <h4>${item.title}</h4>
@@ -99,7 +91,6 @@ window.addEventListener('DOMContentLoaded', () => {
           </div>
         </article>`;
   });
-  displayMenu = displayMenu.join('');
-  // console.log(displayMenu);
-  sectionCenter.innerHTML = displayMenu;
+  displayMenu.join();
+  console.log(displayMenu);
 });
