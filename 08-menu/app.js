@@ -18,7 +18,7 @@ const menu = [
   {
     id: 3,
     title: 'godzilla milkshake',
-    category: 'shakes',
+    category: 'dinner',
     price: 6.99,
     img: './images/item-3.jpeg',
     desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
@@ -42,7 +42,7 @@ const menu = [
   {
     id: 6,
     title: 'oreo dream',
-    category: 'shakes',
+    category: 'dinner',
     price: 18.99,
     img: './images/item-6.jpeg',
     desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
@@ -66,7 +66,7 @@ const menu = [
   {
     id: 9,
     title: 'quarantine buddy',
-    category: 'shakes',
+    category: 'dinner',
     price: 16.99,
     img: './images/item-9.jpeg',
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
@@ -74,9 +74,23 @@ const menu = [
 ];
 
 const sectionCenter = document.querySelector('.section-center');
+const filterBtns = document.querySelectorAll('.filter-btn');
 
+// loading item
 window.addEventListener('DOMContentLoaded', () => {
-  let displayMenu = menu.map(function (item) {
+  displayMenuItems(menu);
+});
+
+// filter item
+
+filterBtns.forEach(function (btn) {
+  btn.addEventListener('click', (e) => {
+    console.log(e.currentTarget);
+  });
+});
+
+function displayMenuItems(menuItems) {
+  let displayMenu = menuItems.map(function (item) {
     // console.log(item);
     return `<article class="menu-item">
           <img src=${item.img} class="photo" alt="${item.title}" />
@@ -91,6 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
           </div>
         </article>`;
   });
-  displayMenu.join();
-  console.log(displayMenu);
-});
+  displayMenu = displayMenu.join('');
+
+  sectionCenter.innerHTML = displayMenu;
+}
