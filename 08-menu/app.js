@@ -50,7 +50,7 @@ const menu = [
   {
     id: 7,
     title: 'bacon overflow',
-    category: 'breakfast',
+    category: 'lunch',
     price: 8.99,
     img: './images/item-7.jpeg',
     desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
@@ -66,7 +66,15 @@ const menu = [
   {
     id: 9,
     title: 'quarantine buddy',
-    category: 'dinner',
+    category: 'lunch',
+    price: 16.99,
+    img: './images/item-9.jpeg',
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  {
+    id: 9,
+    title: 'quarantine buddy',
+    category: 'breakfast',
     price: 16.99,
     img: './images/item-9.jpeg',
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
@@ -85,7 +93,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
 filterBtns.forEach(function (btn) {
   btn.addEventListener('click', (e) => {
-    console.log(e.currentTarget);
+    const category = e.currentTarget.dataset.id;
+    const menuCategory = menu.filter(function (menuItem) {
+      // console.log(menuItem);
+      if (menuItem.category === category) {
+        return menuItem;
+      }
+    });
+    // console.log(menuCategory);
+    if (category === 'all') {
+      displayMenuItems(menu);
+    } else {
+      displayMenuItems(menuCategory);
+    }
   });
 });
 
